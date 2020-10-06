@@ -19,10 +19,10 @@ module.exports=(browser)=>{
                             .click(`(//*[@class="c-shopify-product-tile"])[${i}]/*[@class="c-shopify-product-tile__flipper c-shopify-product-tile__flipper--flipped"]`)
                             .click(`(//*[@class="c-shopify-buy__btn"])[${i}]`)
                             .api.windowHandles(handleID=>{
-                                var amazonHandleID=handleID.value[1]
+                                var shopHandleID=handleID.value[1]
                                 var seriousEatsHandleID=handleID.value[0]
                                 browser
-                                    .switchWindow(amazonHandleID)
+                                    .switchWindow(shopHandleID)
                                     .api.url(shopUrl=>{
                                         var shopUrlText=shopUrl.value
                                         var shopUrlCheck=shopUrlText.search(productRegExp)
@@ -31,8 +31,8 @@ module.exports=(browser)=>{
                                         }
                                         else{
                                             browser
-                                                .getText('//*[@id="productTitle"]',amazonTitle=>{
-                                                    var productTitle=amazonTitle.value
+                                                .getText('//*[@id="productTitle"]',shopTitle=>{
+                                                    var productTitle=shopTitle.value
                                                     var searchResult=productTitle.search(productRegExp)
                                                     if(searchResult!==-1){
                                                         console.log('Search match')
