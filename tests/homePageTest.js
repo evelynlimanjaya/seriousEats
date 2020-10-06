@@ -19,35 +19,35 @@ module.exports = {
             .end()
     },
 
-    // 'All necessary elements visible test':browser=>{
-    //     pageElements.forEach(test=>
-    //         testPage
-    //             .verify.visible(test.selector))
-    // },
+    'All necessary elements visible test':browser=>{
+        pageElements.forEach(test=>
+            testPage
+                .verify.visible(test.selector))
+    },
 
-    // 'Search result test':browser=>{
-    //     searchFunction(testPage)
-    // },
+    'Search result test':browser=>{
+        searchFunction(testPage)
+    },
 
-    // 'Search suggestions test': browser => {
-    //     searchSuggestion(testPage)
-    // },
+    'Search suggestions test': browser => {
+        searchSuggestion(testPage)
+    },
 
-    // 'Recipe card amount test': browser => {
-    //     recipeAmount(testPage)
-    // },
+    'Recipe card amount test': browser => {
+        recipeAmount(testPage)
+    },
 
-    // 'Navigation menu directs to the correct page test':browser=>{
-    //     testPage
-    //         .menuNav()
-    // },
+    'Navigation menu directs to the correct page test':browser=>{
+        testPage
+            .menuNav()
+    },
 
     'Shop test':browser=>{
         shopNav(testPage)
     },
 
-    // 'Save recipe test':browser=>{
-    //     saveRecipe(testPage)
-    // }
+    'Save recipe test':browser=>{
+        saveRecipe(testPage)
+    }
     
 }
