@@ -175,7 +175,7 @@ module.exports={
             locateStrategy:'xpath'
         },
         sectionCards:{
-            selector:'//section[@class="block block-primary block-no-nav"])[1]//article',
+            selector:'(//section[@class="block block-primary block-no-nav"])[1]//article',
             locateStrategy:'xpath'
         },
         moreBtn:'.more',
@@ -199,6 +199,25 @@ module.exports={
         aboutLinks:'.about-links',
         socialLinks:'[class="social-links self-clear"]',
         utilityLinks:'[class="utility-links"]',
+        searchPosts:'#posts',
+        searchInput:'[class="input-medium search-query"]',
+        header1:{
+            selector:'//h1',
+            locateStrategy:'xpath'
+        },
+        header2:{
+            selector:'(//*[@class="itcss__h2"])[1]',
+            locateStrategy:'xpath'
+        },
+        saveRecipeBtn:{
+            selector:'(//*[@title="Save Recipe"])[1]',
+            locateStrategy:'xpath'
+        },
+        saveRecipeTab:{
+            selector:'//*[@id="relish-tab-save"]',
+            locateStrategy:'xpath'
+        }
+
         
     }
 }
