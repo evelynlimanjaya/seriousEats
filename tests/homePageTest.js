@@ -42,12 +42,12 @@ module.exports = {
     //         .menuNav()
     // },
 
-    // 'Shop test':browser=>{
-    //     shopNav(testPage)
-    // },
+    'Shop test':browser=>{
+        shopNav(testPage)
+    },
 
-    'Save recipe test':browser=>{
-        saveRecipe(testPage)
-    }
+    // 'Save recipe test':browser=>{
+    //     saveRecipe(testPage)
+    // }
     
 }
