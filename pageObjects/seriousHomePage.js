@@ -8,10 +8,24 @@ var seriousCommands={
                         .useXpath()
                         .waitForElementVisible(`(//*[@class="Nav--desktop"]/*[@class="Nav__category"])[${i + 1}]/a`)
                         .getText(`(//*[@class="Nav--desktop"]/*[@class="Nav__category"])[${i + 1}]/a`, title => {
+                            var splitTitle=title.value.split(' ')
+                            var stringTitle=String(splitTitle)
+                            var replaceTitle=stringTitle.replace(/,/g,'|')
+                            var titleRegExp=RegExp(replaceTitle,'i')
+                            console.log(titleRegExp)
                             this
                                 .click(`(//*[@class="Nav--desktop"]/*[@class="Nav__category"])[${i + 1}]/a`)
                                 .waitForElementVisible('//h1')
-                                .verify.containsText('//h1', title.value)
+                                .getText('//h1',header=>{
+                                    var headerText=header.value
+                                    var searchHeader=headerText.search(titleRegExp)
+                                    if(searchHeader!==-1){
+                                        console.log('Page is correct')
+                                    }
+                                    else{
+                                        console.log('Page is incorrect')
+                                    }
+                                })
                         })
                         .moveToElement(`(//*[@class="Nav--desktop"]/*[@class="Nav__category"])[${i + 1}]/a`, 10, 10)
                         .verify.visible('//*[@class="Nav--desktop"]//*[@class="Nav__item Nav__item--indent "]', (test) => {
@@ -24,20 +38,39 @@ var seriousCommands={
                                             .moveToElement(`(//*[@class="Nav--desktop"]/*[@class="Nav__category"])[${i + 1}]/a`, 10, 10)
                                             .waitForElementVisible(`(//*[@class="Nav--desktop"]//*[@class="Nav__item Nav__item--indent "])[${n + 1}]`)
                                             .getText(`(//*[@class="Nav--desktop"]//*[@class="Nav__item Nav__item--indent "])[${n + 1}]`, indentName => {
-                                                var pageTitle = indentName.value.toUpperCase()
+                                                var splitTitle=indentName.value.split(' ')
+                                                var stringTitle=String(splitTitle)
+                                                var replaceTitle=stringTitle.replace(/,/g,'|')
+                                                var titleRegExp=RegExp(replaceTitle,'i')
+                                                console.log(titleRegExp)
                                                 this
                                                     .click(`(//*[@class="Nav--desktop"]//*[@class="Nav__item Nav__item--indent "])[${n + 1}]`)
                                                     .verify.visible('(//*[@class="itcss__h2"])[1]', visibility => {
                                                         if (visibility === true) {
                                                             this
                                                                 .waitForElementVisible('(//*[@class="itcss__h2"])[1]')
-                                                                .verify.containsText('(//*[@class="itcss__h2"])[1]', pageTitle)
+                                                                .getText('(//*[@class="itcss__h2"])[1]',header=>{
+                                                                    var headerText=header.value
+                                                                    var searchHeader=headerText.search(titleRegExp)
+                                                                    if(searchHeader!==-1){
+                                                                        console.log('Page is correct')
+                                                                    }
+                                                                })
 
                                                         }
                                                         else {
                                                             this
                                                                 .waitForElementVisible('//h1')
-                                                                .verify.containsText('//h1', pageTitle)
+                                                                .getText('//h1',header=>{
+                                                                    var headerText=header.value
+                                                                    var searchHeader=headerText.search(titleRegExp)
+                                                                    if(searchHeader!==-1){
+                                                                        console.log('Page is correct')
+                                                                    }
+                                                                    else{
+                                                                        console.log('Page is incorrect')
+                                                                    }
+                                                                })
 
                                                         }
                                                     })
@@ -55,15 +88,36 @@ var seriousCommands={
                                                 .moveToElement(`(//*[@class="Nav--desktop"]/*[@class="Nav__category"])[${i + 1}]/a`, 9, 9)
                                                 .waitForElementVisible(`(//*[@class="Nav--desktop"]/*[@data-idx="${i}"]//*[@class="Nav__item  "])[${n + 1}]`)
                                                 .getText(`(//*[@class="Nav--desktop"]/*[@data-idx="${i}"]//*[@class="Nav__item  "])[${n + 1}]`, categoryName => {
-                                                    var pageTitle = categoryName.value.toUpperCase()
-                                                    this
+                                                    var splitTitle=categoryName.value.split(' ')
+                                                    var stringTitle=String(splitTitle)
+                                                    var replaceTitle=stringTitle.replace(/,/g,'|')
+                                                    var titleRegExp=RegExp(replaceTitle,'i')
+                                                    console.log(titleRegExp)
+                                                        this
                                                         .click(`(//*[@class="Nav--desktop"]/*[@data-idx="${i}"]//*[@class="Nav__item  "])[${n + 1}]`)
                                                         .verify.visible('//h1', visibility => {
                                                             if (visibility === true) {
-                                                                this.verify.containsText('//h1', pageTitle)
+                                                                this
+                                                                    .getText('//h1',header=>{
+                                                                        var headerText=header.value
+                                                                        var searchHeader=headerText.search(titleRegExp)
+                                                                        if(searchHeader!==-1){
+                                                                            console.log('Page is correct')
+                                                                        }
+                                                                    })
                                                             }
                                                             else {
-                                                                this.verify.containsText('(//*[@class="itcss__h2"])[1]', pageTitle)
+                                                                this
+                                                                    .getText('(//*[@class="itcss__h2"])[1]',header=>{
+                                                                        var headerText=header.value
+                                                                        var searchHeader=headerText.search(titleRegExp)
+                                                                        if(searchHeader!==-1){
+                                                                            console.log('Page is correct')
+                                                                        }
+                                                                        else{
+                                                                            console.log('Page is incorrect')
+                                                                        }
+                                                                    })
                                                             }
                                                         })
                                                 })
@@ -77,9 +131,24 @@ var seriousCommands={
                                                 .moveToElement(`(//*[@class="Nav--desktop"]/*[@class="Nav__category"])[${i + 1}]/a`, 10, 10)
                                                 .waitForElementVisible(`(//*[@class="Nav--desktop"]/*[@class="Nav__category"])[${i + 1}]/a`)
                                                 .getText(`(//*[@class="Nav--desktop"]/*[@class="Nav__category"])[${i + 1}]/a`,title=>{
+                                                    var splitTitle=title.value.split(' ')
+                                                    var stringTitle=String(splitTitle)
+                                                    var replaceTitle=stringTitle.replace(/,/g,'|')
+                                                    var titleRegExp=RegExp(replaceTitle,'i')
+                                                    console.log(titleRegExp)
+
                                                     this.click(`(//*[@class="Nav--desktop"]//*[text()="View All"])[${i+1}]`)
                                                     .waitForElementVisible('//h1')
-                                                    .verify.containsText('//h1', title.value)
+                                                    .getText('//h1',header=>{
+                                                        var headerText=header.value
+                                                        var searchHeader=headerText.search(titleRegExp)
+                                                        if(searchHeader!==-1){
+                                                            console.log('Page is correct')
+                                                        }
+                                                        else{
+                                                            console.log('Page is incorrect')
+                                                        }
+                                                    })
                                                 })
                                                 
                                         }
@@ -99,20 +168,39 @@ var seriousCommands={
                                             .moveToElement(`(//*[@class="Nav--desktop"]/*[@class="Nav__category"])[${i + 1}]/a`, 9, 9)
                                             .waitForElementVisible(`(//*[@class="Nav--desktop"]/*[@data-idx="${i}"]//*[@class="Nav__item  "])[${n + 1}]`)
                                             .getText(`(//*[@class="Nav--desktop"]/*[@data-idx="${i}"]//*[@class="Nav__item  "])[${n + 1}]`, categoryName => {
-                                                var pageTitle = categoryName.value.toUpperCase()
-                                                this
+                                                var splitTitle=categoryName.value.split(' ')
+                                                var stringTitle=String(splitTitle)
+                                                var replaceTitle=stringTitle.replace(/,/g,'|')
+                                                var titleRegExp=RegExp(replaceTitle,'i')
+                                                console.log(titleRegExp)
+                                            this
                                                     .click(`(//*[@class="Nav--desktop"]/*[@data-idx="${i}"]//*[@class="Nav__item  "])[${n + 1}]`)
-                                                    .waitForElementVisible('//h1')
+                                                    // .waitForElementVisible('//h1')
                                                     .verify.visible('//h1', visibility => {
                                                         if (visibility === true) {
                                                             this
                                                                 .waitForElementVisible('//h1')
-                                                                .verify.containsText('//h1', pageTitle)
+                                                                .getText('//h1',header=>{
+                                                                    var headerText=header.value
+                                                                    var searchHeader=headerText.search(titleRegExp)
+                                                                    if(searchHeader!==-1){
+                                                                        console.log('Page is correct')
+                                                                    }
+                                                                })
                                                         }
                                                         else {
                                                             this
                                                                 .waitForElementVisible('(//*[@class="itcss__h2"])[1]')
-                                                                .verify.containsText('(//*[@class="itcss__h2"])[1]', pageTitle)
+                                                                .getText('(//*[@class="itcss__h2"])[1]',header=>{
+                                                                    var headerText=header.value
+                                                                    var searchHeader=headerText.search(titleRegExp)
+                                                                    if(searchHeader!==-1){
+                                                                        console.log('Page is correct')
+                                                                    }
+                                                                    else{
+                                                                        console.log('Page is incorrect')
+                                                                    }
+                                                                })
                                                         }
                                                     })
                                             })
@@ -126,9 +214,24 @@ var seriousCommands={
                                                 .moveToElement(`(//*[@class="Nav--desktop"]/*[@class="Nav__category"])[${i + 1}]/a`, 10, 10)
                                                 .waitForElementVisible(`(//*[@class="Nav--desktop"]/*[@class="Nav__category"])[${i + 1}]/a`)
                                                 .getText(`(//*[@class="Nav--desktop"]/*[@class="Nav__category"])[${i + 1}]/a`,title=>{
+                                                    var splitTitle=title.value.split(' ')
+                                                    var stringTitle=String(splitTitle)
+                                                    var replaceTitle=stringTitle.replace(/,/g,'|')
+                                                    var titleRegExp=RegExp(replaceTitle,'i')
+                                                    console.log(titleRegExp)
+    
                                                     this.click(`(//*[@class="Nav--desktop"]//*[text()="View All"])[${i+1}]`)
                                                     .waitForElementVisible('//h1')
-                                                    .verify.containsText('//h1', title.value)
+                                                    .getText('//h1',header=>{
+                                                        var headerText=header.value
+                                                        var searchHeader=headerText.search(titleRegExp)
+                                                        if(searchHeader!==-1){
+                                                            console.log('Page is correct')
+                                                        }
+                                                        else{
+                                                            console.log('Page is incorrect')
+                                                        }
+                                                    })
                                                 })
                                                 
                                         }
