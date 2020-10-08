@@ -15,8 +15,8 @@ var seriousCommands={
                             console.log(titleRegExp)
                             this
                                 .click(`(//*[@class="Nav--desktop"]/*[@class="Nav__category"])[${i + 1}]/a`)
-                                .waitForElementVisible('//h1')
-                                .getText('//h1',header=>{
+                                .waitForElementVisible('@header1')
+                                .getText('@header1',header=>{
                                     var headerText=header.value
                                     var searchHeader=headerText.search(titleRegExp)
                                     if(searchHeader!==-1){
@@ -45,23 +45,27 @@ var seriousCommands={
                                                 console.log(titleRegExp)
                                                 this
                                                     .click(`(//*[@class="Nav--desktop"]//*[@class="Nav__item Nav__item--indent "])[${n + 1}]`)
-                                                    .verify.visible('(//*[@class="itcss__h2"])[1]', visibility => {
+                                                    .verify.visible('@header2', visibility => {
                                                         if (visibility === true) {
                                                             this
-                                                                .waitForElementVisible('(//*[@class="itcss__h2"])[1]')
-                                                                .getText('(//*[@class="itcss__h2"])[1]',header=>{
+                                                                .waitForElementVisible('@header2')
+                                                                .getText('@header2',header=>{
                                                                     var headerText=header.value
                                                                     var searchHeader=headerText.search(titleRegExp)
                                                                     if(searchHeader!==-1){
                                                                         console.log('Page is correct')
                                                                     }
+                                                                    else{
+                                                                        console.log('Page is incorrect')
+                                                                    }
+            
                                                                 })
 
                                                         }
                                                         else {
                                                             this
-                                                                .waitForElementVisible('//h1')
-                                                                .getText('//h1',header=>{
+                                                                .waitForElementVisible('@header1')
+                                                                .getText('@header1',header=>{
                                                                     var headerText=header.value
                                                                     var searchHeader=headerText.search(titleRegExp)
                                                                     if(searchHeader!==-1){
@@ -95,20 +99,24 @@ var seriousCommands={
                                                     console.log(titleRegExp)
                                                         this
                                                         .click(`(//*[@class="Nav--desktop"]/*[@data-idx="${i}"]//*[@class="Nav__item  "])[${n + 1}]`)
-                                                        .verify.visible('//h1', visibility => {
+                                                        .verify.visible('@header1', visibility => {
                                                             if (visibility === true) {
                                                                 this
-                                                                    .getText('//h1',header=>{
+                                                                    .getText('@header1',header=>{
                                                                         var headerText=header.value
                                                                         var searchHeader=headerText.search(titleRegExp)
                                                                         if(searchHeader!==-1){
                                                                             console.log('Page is correct')
                                                                         }
+                                                                        else{
+                                                                            console.log('Page is incorrect')
+                                                                        }
+                
                                                                     })
                                                             }
                                                             else {
                                                                 this
-                                                                    .getText('(//*[@class="itcss__h2"])[1]',header=>{
+                                                                    .getText('@header2',header=>{
                                                                         var headerText=header.value
                                                                         var searchHeader=headerText.search(titleRegExp)
                                                                         if(searchHeader!==-1){
@@ -138,8 +146,8 @@ var seriousCommands={
                                                     console.log(titleRegExp)
 
                                                     this.click(`(//*[@class="Nav--desktop"]//*[text()="View All"])[${i+1}]`)
-                                                    .waitForElementVisible('//h1')
-                                                    .getText('//h1',header=>{
+                                                    .waitForElementVisible('@header1')
+                                                    .getText('@header1',header=>{
                                                         var headerText=header.value
                                                         var searchHeader=headerText.search(titleRegExp)
                                                         if(searchHeader!==-1){
@@ -175,23 +183,28 @@ var seriousCommands={
                                                 console.log(titleRegExp)
                                             this
                                                     .click(`(//*[@class="Nav--desktop"]/*[@data-idx="${i}"]//*[@class="Nav__item  "])[${n + 1}]`)
-                                                    // .waitForElementVisible('//h1')
-                                                    .verify.visible('//h1', visibility => {
+                                                    // .waitForElementVisible('@header1')
+                                                    .verify.visible('@header1', visibility => {
                                                         if (visibility === true) {
                                                             this
-                                                                .waitForElementVisible('//h1')
-                                                                .getText('//h1',header=>{
+                                                                .waitForElementVisible('@header1')
+                                                                .getText('@header1',header=>{
                                                                     var headerText=header.value
                                                                     var searchHeader=headerText.search(titleRegExp)
                                                                     if(searchHeader!==-1){
                                                                         console.log('Page is correct')
                                                                     }
+                                                                    else{
+                                                                        console.log('Page is incorrect')
+                                                                    }
+            
+                                                                    
                                                                 })
                                                         }
                                                         else {
                                                             this
-                                                                .waitForElementVisible('(//*[@class="itcss__h2"])[1]')
-                                                                .getText('(//*[@class="itcss__h2"])[1]',header=>{
+                                                                .waitForElementVisible('@header2')
+                                                                .getText('@header2',header=>{
                                                                     var headerText=header.value
                                                                     var searchHeader=headerText.search(titleRegExp)
                                                                     if(searchHeader!==-1){
@@ -221,8 +234,8 @@ var seriousCommands={
                                                     console.log(titleRegExp)
     
                                                     this.click(`(//*[@class="Nav--desktop"]//*[text()="View All"])[${i+1}]`)
-                                                    .waitForElementVisible('//h1')
-                                                    .getText('//h1',header=>{
+                                                    .waitForElementVisible('@header1')
+                                                    .getText('@header1',header=>{
                                                         var headerText=header.value
                                                         var searchHeader=headerText.search(titleRegExp)
                                                         if(searchHeader!==-1){
